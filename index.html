@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Ethics & Learning - 윤리 교실</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        // Tailwind dark mode configuration
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            scroll-behavior: smooth;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .glass-card {
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-pattern {
+            background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+        }
+
+        /* Dark mode custom styles */
+        .dark .glass-card {
+            background: rgba(31, 41, 55, 0.8);
+            border-color: rgba(75, 85, 99, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
+
+    <!-- Theme Toggle Button -->
+    <div class="fixed top-5 right-5 z-[100]">
+        <button onclick="toggleTheme()" class="p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg border border-gray-200 dark:border-gray-700 transition-all hover:scale-110">
+            <i id="theme-icon" class="fas fa-moon text-indigo-600 dark:text-yellow-300 text-xl"></i>
+        </button>
+    </div>
+
+    <!-- Header & Hero Section -->
+    <header class="gradient-bg text-white py-20 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 hero-pattern opacity-10"></div>
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <span class="bg-white/20 px-4 py-1 rounded-full text-sm font-medium mb-4 inline-block">2024 인공지능 기초 수업</span>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">생각하는 기계, <br><span class="text-yellow-300">책임지는 인간</span></h1>
+            <p class="text-lg md:text-xl opacity-90 mb-8">기술의 발달보다 중요한 것은 우리의 가치관입니다. 인공지능의 윤리와 학습 원리를 함께 탐구해 봅시다.</p>
+            <div class="flex justify-center gap-4">
+                <a href="#explore" class="bg-white text-indigo-600 px-8 py-3 rounded-full font-bold hover:bg-yellow-300 transition-colors">수업 시작하기</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Navigation Tabs -->
+    <section id="explore" class="py-12 bg-white dark:bg-gray-800 border-b dark:border-gray-700 sticky top-0 z-50 shadow-sm transition-colors">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="flex justify-around">
+                <button onclick="showTab('ethics')" id="btn-ethics" class="flex flex-col items-center gap-2 text-indigo-600 dark:text-indigo-400 border-b-2 border-indigo-600 pb-2 transition-all">
+                    <i class="fas fa-balance-scale text-2xl"></i>
+                    <span class="font-bold">인공지능 윤리</span>
+                </button>
+                <button onclick="showTab('learning')" id="btn-learning" class="flex flex-col items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-indigo-500 pb-2 transition-all">
+                    <i class="fas fa-brain text-2xl"></i>
+                    <span class="font-bold">학습 프로그램</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <main class="max-w-5xl mx-auto py-16 px-4">
+        
+        <!-- Tab 1: AI Ethics -->
+        <div id="ethics" class="tab-content active">
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="flex flex-col justify-center">
+                    <h2 class="text-3xl font-bold mb-4 text-indigo-800 dark:text-indigo-300">왜 윤리가 필요한가요?</h2>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+                        인공지능은 편향된 데이터를 학습하거나 예상치 못한 결정을 내릴 수 있습니다. <br>
+                        우리 사회의 공정성과 안전을 지키기 위해 AI 개발과 활용 전 과정에서 윤리적 성찰이 필수적입니다.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i> 인간의 존엄성 보호</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i> 데이터의 투명성과 공정성</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i> 결과에 대한 책임성</li>
+                    </ul>
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1507146426996-ef05306b995a?auto=format&fit=crop&w=800&q=80" alt="[인공지능 윤리 이미지]">
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="glass-card p-6 border border-gray-100 bg-white/95 dark:bg-gray-800/90 dark:border-gray-700">
+                    <div class="w-12 h-12 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">알고리즘 편향성</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">데이터에 숨겨진 인간의 편견이 AI를 통해 증폭되는 문제에 대해 토론합니다.</p>
+                </div>
+                <div class="glass-card p-6 border border-gray-100 bg-white/95 dark:bg-gray-800/90 dark:border-gray-700">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">프라이버시 침해</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">개인 정보가 수집되고 처리되는 과정에서 발생할 수 있는 윤리적 쟁점을 다룹니다.</p>
+                </div>
+                <div class="glass-card p-6 border border-gray-100 bg-white/95 dark:bg-gray-800/90 dark:border-gray-700">
+                    <div class="w-12 h-12 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">책임 귀속 문제</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">AI가 잘못된 판단을 내렸을 때, 그 책임은 누구에게 있는지 논의합니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 2: AI Learning Program -->
+        <div id="learning" class="tab-content">
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="rounded-2xl overflow-hidden shadow-xl order-2 md:order-1">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80" alt="[데이터 학습 이미지]">
+                </div>
+                <div class="flex flex-col justify-center order-1 md:order-2">
+                    <h2 class="text-3xl font-bold mb-4 text-purple-800 dark:text-purple-300">어떻게 학습하나요?</h2>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+                        인공지능은 방대한 데이터를 통해 스스로 패턴을 발견합니다. <br>
+                        직접 데이터를 입력하고 모델을 훈련시키며 머신러닝의 기본 원리를 체험해 볼 수 있습니다.
+                    </p>
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg border-l-4 border-purple-500">
+                        <p class="text-sm italic font-medium dark:text-purple-200">"체험형 학습을 통해 블랙박스라고 불리는 AI 내부의 논리를 이해할 수 있습니다."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <div class="flex items-start gap-4 p-6 glass-card border border-purple-100 bg-white/95 dark:bg-gray-800/90 dark:border-purple-900/30">
+                    <span class="bg-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-bold">1</span>
+                    <div>
+                        <h4 class="font-bold text-lg">데이터 수집 및 분류</h4>
+                        <p class="text-gray-500 dark:text-gray-400">학습에 필요한 텍스트, 이미지, 수치 데이터를 모으고 레이블링(Labeling)하는 과정을 연습합니다.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 p-6 glass-card border border-purple-100 bg-white/95 dark:bg-gray-800/90 dark:border-purple-900/30">
+                    <span class="bg-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-bold">2</span>
+                    <div>
+                        <h4 class="font-bold text-lg">모델 학습 및 테스트</h4>
+                        <p class="text-gray-500 dark:text-gray-400">엔트리, 티처블 머신 등 교육용 도구를 활용해 직접 만든 모델의 정확도를 검증합니다.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 p-6 glass-card border border-purple-100 bg-white/95 dark:bg-gray-800/90 dark:border-purple-900/30">
+                    <span class="bg-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-bold">3</span>
+                    <div>
+                        <h4 class="font-bold text-lg">실제 문제 해결 적용</h4>
+                        <p class="text-gray-600 dark:text-gray-300 font-medium">우리 주변의 문제를 해결할 수 있는 AI 앱의 프로토타입을 구상하고 제작합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Ethical Dilemma Section -->
+    <section class="bg-indigo-900 dark:bg-black text-white py-16 transition-colors">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h3 class="text-3xl font-bold mb-6">윤리적 딜레마 탐구</h3>
+            <p class="text-lg text-indigo-200 dark:text-gray-400 mb-8">
+                자율주행 자동차의 브레이크가 고장 났다면, AI는 누구를 구해야 할까요?<br>
+                정답이 없는 문제에 대해 깊이 있게 토론하고 나만의 기준을 세워봅시다.
+            </p>
+            <a href="./01/index.html" class="inline-block bg-yellow-400 text-indigo-900 px-10 py-4 rounded-full font-bold text-lg hover:bg-yellow-300 transition-all transform hover:scale-105 shadow-lg">
+                딜레마 사례 연구하러 가기 <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Simple Footer -->
+    <footer class="bg-gray-900 text-white py-8 border-t border-gray-800">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="text-sm text-gray-500">
+                &copy; 2024 윤리교실 - AI 기초 수업용 교육 자료
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Logic
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                icon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                icon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Initialize theme based on preference
+        (function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const icon = document.getElementById('theme-icon');
+            
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.documentElement.classList.add('dark');
+                icon.classList.replace('fa-moon', 'fa-sun');
+            }
+        })();
+
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // UI Button resets
+            const btnEthics = document.getElementById('btn-ethics');
+            const btnLearning = document.getElementById('btn-learning');
+            
+            [btnEthics, btnLearning].forEach(btn => {
+                btn.classList.remove('text-indigo-600', 'dark:text-indigo-400', 'border-b-2', 'border-indigo-600');
+                btn.classList.add('text-gray-400', 'dark:text-gray-500');
+            });
+
+            document.getElementById(tabName).classList.add('active');
+            
+            const activeBtn = document.getElementById('btn-' + tabName);
+            activeBtn.classList.remove('text-gray-400', 'dark:text-gray-500');
+            activeBtn.classList.add('text-indigo-600', 'dark:text-indigo-400', 'border-b-2', 'border-indigo-600');
+        }
+    </script>
+</body>
+</html>
